@@ -33,12 +33,12 @@ def register():
         # Flash a success message thanking them for signing up
         flash(f'Thank you {username}, you have succesfully registered!', 'success')
 
-        # Create Welcome Email to new user
-        welcome_message = Message('Welcome to the Kekambas Blog!', [email])
-        welcome_message.body = f'Dear {username}, Thank you for signing up for our blog. We are so excited to have you.'
+        # # Create Welcome Email to new user
+        # welcome_message = Message('Welcome to the Kekambas Blog!', [email])
+        # welcome_message.body = f'Dear {username}, Thank you for signing up for our blog. We are so excited to have you.'
 
-        # Send Welcome Email
-        mail.send(welcome_message)
+        # # Send Welcome Email
+        # mail.send(welcome_message)
 
         # Redirecting to the home page
         return redirect(url_for('index'))
