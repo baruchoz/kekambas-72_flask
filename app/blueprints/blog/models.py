@@ -13,3 +13,27 @@ class Post(db.Model):
         self.title = title
         self.content = content
         self.user_id = user_id
+
+    def to_dict(self):
+        post_dict = {
+            'id': self.id,
+            'title': self.title,
+            'content': self.content,
+            'date_created': self.date_created,
+            'user_id': self.user_id
+        }
+        return post_dict
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def update_post(self, data):
+        for field in data:
+            if field in {'title', 'content'}:
+                setattr(self, field, data[field])
+        db.session.commit()
